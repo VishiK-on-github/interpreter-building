@@ -44,7 +44,7 @@ interpretes the compiled code to machine instruction
 
 ### Compiler types:
 
-1. Ahead-of-time (AOT) compilers: C++ might call interpreter at compile time to
-   pre-evaluate parts for optimization
+1. Ahead-of-time (AOT) compilers: Compiles / converts all code at once. C++
+   might call interpreter at compile time to pre-evaluate parts for optimization
 2. Just-in-time (JIT) compiler: code generation at runtime (JS)
 3. AST-transformers (transpilers): transformation at AST level
