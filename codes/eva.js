@@ -63,13 +63,22 @@ class Eva {
 		// function declaration
 		if (exp[0] === "def") {
 			const [_tag, name, params, body] = exp;
-			const fn = {
+
+			// jit-transpile to a variable declaration
+			const varExp = ["var", name, ["lambda", params, body]];
+
+			return this.eval(varExp, env);
+		}
+		// -------------------------------
+		// lambda fns
+		if (exp[0] === "lambda") {
+			const [_tag, params, body] = exp;
+
+			return {
 				params,
 				body,
-				env, // closure
+				env,
 			};
-
-			return env.define(name, fn);
 		}
 		// -------------------------------
 		// Function call

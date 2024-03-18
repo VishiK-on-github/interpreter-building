@@ -9,6 +9,7 @@ const tests = [
 	require("./while-test.js"),
 	require("./built-in-function-test.js"),
 	require("./user-defined-function-test.js"),
+	require("./lambda-test.js"),
 ];
 
 // Tests
