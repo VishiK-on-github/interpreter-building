@@ -81,6 +81,30 @@ class Eva {
 			return this.eval(whileExp, env);
 		}
 		// -------------------------------
+		// increment
+		if (exp[0] === "++") {
+			const incExp = this._transformer.transformIncToSet(exp);
+			return this.eval(incExp, env);
+		}
+		// -------------------------------
+		// decrement
+		if (exp[0] === "--") {
+			const decExp = this._transformer.transformDecToSet(exp);
+			return this.eval(decExp, env);
+		}
+		// -------------------------------
+		// +=
+		if (exp[0] === "+=") {
+			const incExp = this._transformer.transformIncValToSet(exp);
+			return this.eval(incExp, env);
+		}
+		// -------------------------------
+		// -=
+		if (exp[0] === "-=") {
+			const decExp = this._transformer.transformDecValToSet(exp);
+			return this.eval(decExp, env);
+		}
+		// -------------------------------
 		// lambda fns
 		if (exp[0] === "lambda") {
 			const [_tag, params, body] = exp;

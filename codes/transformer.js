@@ -44,6 +44,27 @@ class Transformer {
 
 		return whileExp;
 	}
+	// ++
+	transformIncToSet(incexp) {
+		const [_tag, exp] = incexp;
+		const incExp = ["set", exp, ["+", exp, 1]];
+		return incExp;
+	}
+	// --
+	transformDecToSet(decExp) {
+		const [_tag, exp] = decExp;
+		return ["set", exp, ["-", exp, 1]];
+	}
+	// +=
+	transformIncValToSet(incExp) {
+		const [_tag, exp, value] = incExp;
+		return ["set", exp, ["+", exp, value]];
+	}
+	// -=
+	transformDecValToSet(decExp) {
+		const [_tag, exp, value] = decExp;
+		return ["set", exp, ["-", exp, value]];
+	}
 }
 
 module.exports = Transformer;
