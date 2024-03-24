@@ -17,6 +17,8 @@ const tests = [
 	require("./inc-test.js"),
 	require("./inc-value-test.js"),
 	require("./class_test.js"),
+	require("./module-test.js"),
+	require("./import-test.js"),
 ];
 
 // Tests
