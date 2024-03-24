@@ -10,6 +10,10 @@ class Eva {
 		this.global = global;
 		this._transformer = new Transformer();
 	}
+	// eval global code wrapping into a block
+	evalGlobal(exp) {
+		return this._evalBlock(exp, this.global);
+	}
 	// to evaluate expressions
 	eval(exp, env = this.global) {
 		// Primitives
@@ -140,6 +144,12 @@ class Eva {
 
 			// define in record to access class by using its name
 			return env.define(name, classEnv);
+		}
+		// -------------------------------
+		// super expressions
+		if (exp[0] === "super") {
+			const [_tag, className] = exp;
+			return this.eval(className, env).parent;
 		}
 		// -------------------------------
 		// new keyword: creating objs new <classname> <params>
